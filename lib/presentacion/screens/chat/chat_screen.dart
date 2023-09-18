@@ -19,7 +19,7 @@ class ChatScreen extends StatelessWidget {
         ),
         title: const Text('Juan Perez 🐺'),
       ),
-      body: _ChatView(), // Agrega aquí el contenido de tu pantalla de chat
+      body: _ChatView(), // Llama a _ChatView para mostrar el contenido de tu pantalla de chat
     );
   }
 }
@@ -36,12 +36,12 @@ class _ChatView extends StatelessWidget {
               child: ListView.builder(
                 itemCount: 100,
                 itemBuilder: (context, index) {
+                  // Alternar entre MyMessageBubble y OtroMyMessageBubble en función del índice
                   return (index % 2 == 0) ? const OtroMyMessageBubble() : MyMessageBubble();
                 },
-                // Agrega aquí el contenido de tu vista de chat dentro de este contenedor
               ),
             ),
-            Text('Hola Mundo'),
+            Text('Hola Mundo'), // Un mensaje de prueba al final de la vista de chat
           ],
         ),
       ),

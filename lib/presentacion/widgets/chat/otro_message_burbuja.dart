@@ -10,20 +10,21 @@ class OtroMyMessageBubble extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // Contenedor para el mensaje del otro usuario
         Container(
           decoration: BoxDecoration(
-            color: colors.primary,
-            borderRadius: BorderRadius.circular(20),
+            color: colors.primary, // Color primario del tema de la aplicación
+            borderRadius: BorderRadius.circular(20), // Bordes redondeados del contenedor
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Text(
-              'Id excepteur quis',
-              style: TextStyle(color: Colors.white),
+              'Id excepteur quis', // Contenido del mensaje
+              style: TextStyle(color: Colors.white), // Estilo del texto (color blanco)
             ),
           ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 10), // Espacio entre mensajes
       ],
     );
   }

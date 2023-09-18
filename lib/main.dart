@@ -7,7 +7,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key});
 
   // Este widget es la raíz de tu aplicación.
   @override
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Si No APP',
       debugShowCheckedModeBanner: false, // Deshabilita el banner de depuración en la esquina superior derecha.
       theme: AppTheme(selectedColor: 2).theme(), // Establece el tema de la aplicación usando la clase AppTheme.
-   home: const ChatScreen(),
+      home: const ChatScreen(), // Define la pantalla principal de la aplicación como ChatScreen.
     );
   }
 }
