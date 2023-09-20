@@ -19,7 +19,7 @@ class OtroMyMessageBubble extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Text(
-              'va jalo', // Contenido del mensaje
+              'yes', // Contenido del mensaje
               style: TextStyle(color: Colors.white), // Estilo del texto (color blanco)
             ),
           ),

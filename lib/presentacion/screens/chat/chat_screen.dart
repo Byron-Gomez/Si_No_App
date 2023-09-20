@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:si_no_app/domain/entities/message.dart';
+import 'package:si_no_app/presentacion/providers/chat_providers.dart';
 import 'package:si_no_app/presentacion/widgets/chat/message_burguja.dart';
 import 'package:si_no_app/presentacion/widgets/chat/otro_message_burbuja.dart';
 import 'package:si_no_app/presentacion/widgets/shared/message_field_box.dart';
@@ -27,6 +30,9 @@ class ChatScreen extends StatelessWidget {
 class _ChatView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    
+   final chatProvider = context.watch<ChatProvider>();
+
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -34,15 +40,21 @@ class _ChatView extends StatelessWidget {
           children: [
             Expanded(
               child: ListView.builder(
-                itemCount: 100,
+                controller: chatProvider.chatScrollController,
+                itemCount: chatProvider.messagesList.length,
                 itemBuilder: (context, index) {
-                  // Alternar entre MyMessageBubble y OtroMyMessageBubble en función del índice
-                  return (index % 2 == 0) ? const OtroMyMessageBubble() : MyMessageBubble();
+                  final message = chatProvider.messagesList[index];
+                    return(message.fromWho == FromWho.other)
+                  ?  const OtroMyMessageBubble() 
+                  :   MyMessageBubble(message:message,);
                 },
               ),
             ),
             //caja de texto de mensaje
-            const MessageFieldBox()
+             MessageFieldBox(
+              //onValue: (value) => chatProvider.sendMessage(value),
+              onValue : chatProvider.sendMessage,
+            )
           ],
         ),
       ),
