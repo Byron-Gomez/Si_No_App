@@ -23,14 +23,14 @@ class AppTheme {
       : assert(
             selectedColor >= 0 &&
                 selectedColor <= _colorThemes.length - 1,
-            'Colors must be between 0 and ${_colorThemes.length}');
+            'El índice de color debe estar entre 0 y ${_colorThemes.length - 1}');
 
   // Método para obtener el tema de la aplicación
   ThemeData theme() {
     return ThemeData(
       useMaterial3: true, // Habilita el uso de Material3 (si se usa en la versión de Flutter correspondiente)
       colorSchemeSeed: _colorThemes[selectedColor], // Define el color principal del tema
-      brightness: Brightness.dark // Opción para ajustar el brillo del tema (actualmente comentada)
+      //brightness: Brightness.dark, // Opción para ajustar el brillo del tema (actualmente comentada)
     );
   }
 }

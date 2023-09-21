@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:si_no_app/domain/entities/message.dart';
 
 class OtroMyMessageBubble extends StatelessWidget {
-  const OtroMyMessageBubble({super.key});
+      final Message message;
+
+  const OtroMyMessageBubble({
+    super.key,
+    required this.message
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +25,13 @@ class OtroMyMessageBubble extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Text(
-              'yes', // Contenido del mensaje
+              message.text,
               style: TextStyle(color: Colors.white), // Estilo del texto (color blanco)
             ),
           ),
         ),
         const SizedBox(height: 5),
-        _ImageBublle(),
+        _ImageBublle(message.imageUrl!),
         const SizedBox(height: 10),
 
       ],
@@ -34,13 +40,20 @@ class OtroMyMessageBubble extends StatelessWidget {
 }
 
 class _ImageBublle extends StatelessWidget {
+
+final String imageUrl;
+
+const _ImageBublle(
+     this.imageUrl
+  );
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: Image.network(
-        'https://yesno.wtf/assets/yes/3-422e51268d64d78241720a7de52fe121.gif',
+        imageUrl,
         width: size.width * 0.7,
         height: 150,
         fit: BoxFit.cover,
@@ -50,7 +63,7 @@ class _ImageBublle extends StatelessWidget {
             width: size.width * 0.7,
             height: 150,
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            child: const Text('estoy enviando una imagen'),
+            child: const Text('enviando una imagen'),
           );
         },
       ),
